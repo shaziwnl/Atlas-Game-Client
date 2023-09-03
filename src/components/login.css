@@ -1,0 +1,58 @@
+
+.login {
+    background-image: url('../../public/main_bg.jpg');
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: auto;
+    margin-top: 293.5px;
+    gap: 10px;
+    margin-bottom: 1px;
+}
+
+.login-form > input {
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 10px;
+    border: solid 1.5px rgb(200, 196, 196);
+    opacity: 0.5;
+    color: black;
+}
+
+.login-form > input::placeholder {
+    opacity: 1;
+    color: black;
+    font-weight: 400;
+}
+
+.login-form > button {
+    font-size: 17px;
+    padding: 6px;
+    border-radius: 10px;
+    border: solid 1px rgb(200, 196, 196);
+    opacity: 0.8;
+}
+
+.login-form > button:hover {
+    transform: scale(1.03);
+}
+
+.signUp-btn {
+    font-size: 17px;
+    padding: 6px;
+    border-radius: 10px;
+    border: solid 1px rgb(200, 196, 196);
+    opacity: 0.8;
+    width: 25%;
+}
+
+.signUp-btn:hover {
+    transform: scale(1.03);
+}

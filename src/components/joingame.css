@@ -1,0 +1,64 @@
+.joingame-container {
+    background-image: url('../../public/amazing_bg.jpg');
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.joingame-form {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.joingame-form > input {
+    border-radius: 20px;
+    border: none;
+    height: 35px;
+    opacity: 0.75;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-size: large;
+}
+
+.joingame-form > button {
+    border-radius: 20px;
+    border: none;
+    height: 35px;
+    opacity: 0.75;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-size: large;
+    width: 250px;
+    align-self: center;
+}
+
+.joingame-form > button:hover {
+    transform: scale(1.03);
+}
+
+
+.joingame-form > a > button {
+    border-radius: 20px;
+    border: none;
+    height: 35px;
+    opacity: 0.75;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    font-size: large;
+    width: 250px;
+    align-self: center;
+}
+
+.joingame-form > a > button:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+#logout-btn-jg {
+    width: 125px;
+}
