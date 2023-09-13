@@ -17,13 +17,12 @@ Step 1 - Create and account \
 Step 2 - Login \
 Step 3 - Play!
 
+# Signup Page
+![image](https://github.com/shaziwnl/atlas-game-client/assets/121330440/ecefdbf2-7ea1-411d-85a4-e9c24ddb8978)
 
-# Index File
-![image](https://github.com/shaziwnl/TodoAppFlask/assets/121330440/d3b5e8a6-0f1c-4df7-9d0d-18d7eeb67dcd)
+# Login Page
+![image](https://github.com/shaziwnl/atlas-game-client/assets/121330440/803483c0-c878-4e5a-8fcb-63a1fc6a8900)
 
-
-# Todo Example
-![image](https://github.com/shaziwnl/TodoAppFlask/assets/121330440/728c4cdf-8046-4057-a876-636c808916a3)
 
 
 
