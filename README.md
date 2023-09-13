@@ -47,7 +47,8 @@ Project is *complete*
 
 
 ## Contact
-Sharang Goel: s4goel@uwaterloo.ca
+Sharang Goel: sharang.goel@uwaterloo.ca
+Hetarth Mahida: hetarthmahida@gmail.com
 
 
 
