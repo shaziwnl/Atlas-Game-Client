@@ -1,4 +1,4 @@
-# 🌏 Atlas Game - Full Stack Online Multiplayer Game
+# 🌏 Atlas Game - Full Stack Online Multiplayer Game 🎮
 
 > A geography game created using the MERN Stack, hosted on Render
 
