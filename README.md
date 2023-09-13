@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# 📝 Atlas Game - Full Stack Online Multiplayer Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A geography game created using the MERN Stack 
 
-## Available Scripts
+## Table of Contents
+* [Setup](#setup)
+* [Usage](#usage)
+* [Technologies Used](#technologies-used)
+* [Project Status](#project-status)
+* [Contact](#contact)
+<!-- * [License](#license) -->
 
-In the project directory, you can run:
 
-### `npm start`
+## Setup
+Run the following commands in the terminal:-
+- git clone https://github.com/shaziwnl/TodoAppFlask.git
+- cd TodoAppFlask
+- pip install flask
+- pip install flask-sqlalchemy
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
+Run the following command in the terminal from the Project Directory:-
+- python app.py
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Index File
+![image](https://github.com/shaziwnl/TodoAppFlask/assets/121330440/d3b5e8a6-0f1c-4df7-9d0d-18d7eeb67dcd)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+# Todo Example
+![image](https://github.com/shaziwnl/TodoAppFlask/assets/121330440/728c4cdf-8046-4057-a876-636c808916a3)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Technologies Used
+- HTML/CSS (Bootstrap 4.3.1)
+- Python 3.10.5 (Flask 2.3.2)
+- SQL (SQLite)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project Status
+Project is *complete*
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contact
+Sharang Goel: s4goel@uwaterloo.ca
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
