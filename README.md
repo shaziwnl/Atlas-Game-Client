@@ -33,12 +33,14 @@ Step 3 - Play!
 ![image](https://github.com/shaziwnl/atlas-game-client/assets/121330440/9a1d7b96-9f0e-4da3-b9c7-1d24efe03e35)
 
 
-
-
 ## Technologies Used
-- HTML/CSS (Bootstrap 4.3.1)
-- Python 3.10.5 (Flask 2.3.2)
-- SQL (SQLite)
+- HTML/CSS
+- JavaScript (React with Node.js)
+- Express
+- MongoDB
+- MaterialUI
+- Socket.IO
+
 
 ## Project Status
 Project is *complete*
