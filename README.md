@@ -1,6 +1,6 @@
 # 📝 Atlas Game - Full Stack Online Multiplayer Game
 
-> A geography game created using the MERN Stack 
+> A geography game created using the MERN Stack, hosted on Render
 
 ## Table of Contents
 * [Setup](#setup)
@@ -11,16 +11,8 @@
 <!-- * [License](#license) -->
 
 
-## Setup
-Run the following commands in the terminal:-
-- git clone https://github.com/shaziwnl/TodoAppFlask.git
-- cd TodoAppFlask
-- pip install flask
-- pip install flask-sqlalchemy
-
 ## Usage
-Run the following command in the terminal from the Project Directory:-
-- python app.py
+Game is live here - https://atlas-game.netlify.app/
 
 
 # Index File
