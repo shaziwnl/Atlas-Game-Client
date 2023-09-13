@@ -3,7 +3,7 @@
 > A geography game created using the MERN Stack, hosted on Render
 
 ## Table of Contents
-* [Backend]((https://github.com/shaziwnl/Atlas-game))
+* [Backend](https://github.com/shaziwnl/Atlas-game)
 * [Usage](#usage)
 * [Technologies Used](#technologies-used)
 * [Project Status](#project-status)
