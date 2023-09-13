@@ -23,6 +23,14 @@ Step 3 - Play!
 # Login Page
 ![image](https://github.com/shaziwnl/atlas-game-client/assets/121330440/803483c0-c878-4e5a-8fcb-63a1fc6a8900)
 
+# Lobby
+![image](https://github.com/shaziwnl/atlas-game-client/assets/121330440/2bc5503f-bafa-42b1-9f33-f4f35293f19f)
+
+# Game 
+![image](https://github.com/shaziwnl/atlas-game-client/assets/121330440/97ee84a2-b749-4d9f-b223-6b2486968e88)
+
+# Rules
+![image](https://github.com/shaziwnl/atlas-game-client/assets/121330440/9a1d7b96-9f0e-4da3-b9c7-1d24efe03e35)
 
 
 
