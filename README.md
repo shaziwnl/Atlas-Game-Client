@@ -13,7 +13,7 @@
 
 ## Usage
 Game is live here - https://atlas-game.netlify.app/ \
-Step 1 - Create and account \
+Step 1 - Create an account \
 Step 2 - Login \
 Step 3 - Play!
 
