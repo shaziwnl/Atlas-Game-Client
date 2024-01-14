@@ -43,7 +43,7 @@ Step 3 - Play!
 
 
 ## Project Status
-Project is *complete*
+Some buggy sockets, in development
 
 
 ## Contact
