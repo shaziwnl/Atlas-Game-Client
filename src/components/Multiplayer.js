@@ -14,10 +14,13 @@ import Modal from '@mui/material/Modal';
 
 import io from 'socket.io-client'
 
-const socket = io.connect('https://atlas-game.onrender.com')
+const socket = io.connect("https://atlas-game.onrender.com")
 
 function Multiplayer() {
-    const [token, setToken] = useState(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
+
+    const location = useLocation();
+    const room = useState(location.state.room)
 
     const [backgroundImage, setBackgroundImage] = useState(1);
 
@@ -41,17 +44,13 @@ function Multiplayer() {
 
     const [redirectToJoinGame, setRedirectToJoinGame] = useState(false)
 
-    const location = useLocation();
-
-    const [room, setRoom] = useState(location.state.room)
-
     const [playErr] = useSound(errorSound, {volume: 1})
 
     const [playCorrect] = useSound(successSound, {volume: 0.3})
 
     useEffect(() => {
       if (room) {
-        socket.emit('join_room', room)
+        socket.emit('join_room', room[0])
       } else {
         return <Navigate to='/joingame' />
       }
@@ -83,7 +82,6 @@ function Multiplayer() {
     }
 
     if (redirectToJoinGame) { //if we are leaving the game
-      
       return <Navigate to='/joingame'/>
     }
 

@@ -6,8 +6,8 @@ import { useState } from 'react'
 function JoinGame() {
     const [room, setRoom] = useState("")
     const [validRoom, setValidRoom] = useState(false)
-    const [token, setToken] = useState(localStorage.getItem('token'))
     const [logout, setLogout] = useState(false)
+    const token = useState(localStorage.getItem('token'))
 
     if (!token) {
         return <Navigate to='/login' />
