@@ -50,7 +50,7 @@ function Multiplayer() {
 
     useEffect(() => {
       if (room) {
-        socket.emit('join_room', room)
+        socket.emit('join_room', room[0])
       } else {
         return <Navigate to='/joingame' />
       }
