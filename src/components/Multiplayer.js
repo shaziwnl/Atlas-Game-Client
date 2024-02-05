@@ -19,6 +19,7 @@ const socket = io.connect("https://atlas-game.onrender.com")
 function Multiplayer() {
     const token = localStorage.getItem('token')
 
+    const location = useLocation();
     const room = useState(location.state.room)
 
     const [backgroundImage, setBackgroundImage] = useState(1);
@@ -42,8 +43,6 @@ function Multiplayer() {
     const [result, setResult] = useState("")
 
     const [redirectToJoinGame, setRedirectToJoinGame] = useState(false)
-
-    const location = useLocation();
 
     const [playErr] = useSound(errorSound, {volume: 1})
 
