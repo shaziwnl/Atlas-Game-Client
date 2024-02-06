@@ -12,13 +12,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
-import io from 'socket.io-client'
+// import { io } from 'socket.io-client'
+// const socket = io.connect('https://atlas-game.onrender.com')
+import { socket } from './JoinGame';
 
-const socket = io.connect('https://atlas-game.onrender.com')
 
 function Multiplayer() {
-    const [token, setToken] = useState(localStorage.getItem('token'))
-
     const [backgroundImage, setBackgroundImage] = useState(1);
 
     const [turn, setTurn] = useState(true);
@@ -29,33 +28,40 @@ function Multiplayer() {
 
     const handleClose = () => setOpen(false);
 
-    const [prev, setPrev] = useState('atlas')
+    const [prev, setPrev] = useState('atlas');
 
     const [guess, setGuess] = useState("");
 
-    const [alert, setAlert] = useState("")
+    const [alert, setAlert] = useState("");
     
-    const [guesses, setGuesses] = useState([])
+    const [guesses, setGuesses] = useState([]);
 
-    const [result, setResult] = useState("")
+    const [result, setResult] = useState("");
 
-    const [redirectToJoinGame, setRedirectToJoinGame] = useState(false)
+    const [redirectToJoinGame, setRedirectToJoinGame] = useState(false);
 
     const location = useLocation();
 
-    const [room, setRoom] = useState(location.state.room)
+    const room = location.state.room;
 
-    const [playErr] = useSound(errorSound, {volume: 1})
+    const token = localStorage.getItem('token');
+
+    const [playErr] = useSound(errorSound, {volume: 1});
 
     const [playCorrect] = useSound(successSound, {volume: 0.3})
 
+    // useEffect(() => {
+    //   socket.connect()
+    //   if (room) {
+    //     socket.emit('join_room', room)
+    //   } else {
+    //     return <Navigate to='/joingame' />
+    //   }
+    // }, [])
+
     useEffect(() => {
-      if (room) {
-        socket.emit('join_room', room)
-      } else {
-        return <Navigate to='/joingame' />
-      }
-    }, [])
+      if (!room) { return <Navigate to='/joingame' /> }
+    })
 
     useEffect(() => { //Every time there is a change in the socket, we receive the message
       socket.on('receive_message', (data) => {
@@ -128,10 +134,12 @@ function Multiplayer() {
       setResult(<div className='center-text-container'>
                   <h1 className='center-text'>YOU LOST</h1>
                 </div>)
+      socket.disconnect()
       setTimeout(() => setRedirectToJoinGame(true), 2000)
     }
 
     function leaveRoom() {
+      socket.disconnect()
       setTimeout(() => setRedirectToJoinGame(true), 1000)
     }
 
@@ -180,8 +188,8 @@ function Multiplayer() {
       <div className='random-buttons'>
         <Button variant="contained" size='large'  onClick={handleOpen}>Show Rules</Button>
         <Button variant="contained" size='large'  onClick={changeBg}>Change Background</Button>
-        <Button variant="contained" size='large'  onClick={leaveRoom}>Leave Room</Button>
-        <Button variant="contained" size='large' color="error" onClick={handleResign}>Resign</Button>
+        {/* <Button variant="contained" size='large'  onClick={leaveRoom}>Leave Room</Button> */}
+        <Button variant="contained" size='large' color="error" onClick={handleResign}>Resign</Button> 
       </div>
         <Modal
           open={open}

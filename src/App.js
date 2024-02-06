@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Signup from './components/Signup';
 import Login from './components/Login';
-import JoinGame from './components/JoinGame';
+import {JoinGame} from './components/JoinGame';
 import Random from './components/Random';
 import Multiplayer from './components/Multiplayer';
 

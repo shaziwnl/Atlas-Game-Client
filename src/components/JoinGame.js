@@ -1,24 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './joingame.css'
 import { Link, Navigate } from 'react-router-dom'
 import { useState } from 'react'
+
+import { socket } from '../socket';
 
 function JoinGame() {
     const [room, setRoom] = useState("")
     const [validRoom, setValidRoom] = useState(false)
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [logout, setLogout] = useState(false)
+    const [goToMultiplayer, setGoToMultiplayer] = useState(false)
+
+    useEffect(() => {
+        socket.connect()
+    }, []);
+
+    useEffect(() => {
+        socket.on('join_success', (message) => {
+            console.log(message);
+            setGoToMultiplayer(true);
+        })
+
+        socket.on('join_fail', (message) => {
+            console.log(message)
+        })
+    },[socket])
 
     if (!token) {
         return <Navigate to='/login' />
     }
 
     if (validRoom) {
-        return <Navigate to='/multiplayer' state={{room}} />
+        socket.emit('join_room', room)
     }
 
     if (logout) {
         return <Navigate to='/login'/>
+    }
+
+    if (goToMultiplayer) {
+        return <Navigate to='/multiplayer' state={{room}} />
     }
 
     function joinRoom() {
@@ -49,4 +71,4 @@ function JoinGame() {
     )
 }
 
-export default JoinGame
+export { socket, JoinGame }
