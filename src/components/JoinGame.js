@@ -8,15 +8,13 @@ import { socket } from '../socket';
 function JoinGame() {
     const [room, setRoom] = useState("")
     const [validRoom, setValidRoom] = useState(false)
-    const [token, setToken] = useState(localStorage.getItem('token'))
     const [logout, setLogout] = useState(false)
     const [goToMultiplayer, setGoToMultiplayer] = useState(false)
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
         socket.connect()
-    }, []);
 
-    useEffect(() => {
         socket.on('join_success', (message) => {
             console.log(message);
             setGoToMultiplayer(true);
@@ -25,7 +23,7 @@ function JoinGame() {
         socket.on('join_fail', (message) => {
             console.log(message)
         })
-    },[socket])
+    },[])
 
     if (!token) {
         return <Navigate to='/login' />

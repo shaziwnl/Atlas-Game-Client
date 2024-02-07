@@ -76,7 +76,7 @@ function Random() {
       if (!guess) {
         setAlert(<Alert severity="error"><strong>Guess cannot be empty</strong></Alert>)
       } else {
-      axios.post('https://atlas-game.onrender.com/guess', {guess, prev, guesses})
+      axios.post('https://atlas-game.onrender.com/guess', {guess, prev, guesses, room: "SinglePlayer"})
            .then(res => {
             if (res.data.error) {
               setAlert(<Alert variant="filled" severity="info"><strong>{res.data.message}</strong></Alert>)

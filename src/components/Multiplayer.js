@@ -50,20 +50,14 @@ function Multiplayer() {
 
     const [playCorrect] = useSound(successSound, {volume: 0.3})
 
-    // useEffect(() => {
-    //   socket.connect()
-    //   if (room) {
-    //     socket.emit('join_room', room)
-    //   } else {
-    //     return <Navigate to='/joingame' />
-    //   }
-    // }, [])
-
-    useEffect(() => {
-      if (!room) { return <Navigate to='/joingame' /> }
-    })
-
     useEffect(() => { //Every time there is a change in the socket, we receive the message
+      fetch(`http://localhost:3001/guesses/${room}`)
+      .then(res => res.json())
+      .then(data => {
+        setGuesses(data.guesses)
+        setPrev(data.guesses ? data.guesses[data.guesses.length - 1] : 'atlas')
+      })
+
       socket.on('receive_message', (data) => {
         if (guesses === data.guesses) {
           setTurn(false)
@@ -73,16 +67,18 @@ function Multiplayer() {
         setGuesses(data.guesses)
         setPrev(data.guess)
         setAlert("")
-    })}, [socket])
+      })
 
-    useEffect(() => {
-        socket.on('lost', (room) => {
+      socket.on('lost', (room) => {
         setResult(<div className='center-text-container'>
                     <h1 className='center-text'>YOU WON!</h1>
                   </div>)
         setTimeout(() => setRedirectToJoinGame(true), 2000)
-    })}, [socket])
+      })
 
+    }, [])
+
+    if (!room) { return <Navigate to='/joingame' /> }
 
     if (!token) { //authentication 
       return <Navigate to='/login' />
@@ -108,7 +104,7 @@ function Multiplayer() {
       } else if (!guess) {
         setAlert(<Alert severity="error"><strong>Guess cannot be empty</strong></Alert>)
       } else {
-        axios.post('https://atlas-game.onrender.com/guess', {guess, prev, guesses})
+        axios.post('http://localhost:3001/guess', {guess, prev, guesses, room})
              .then(async (res) => {
               if (res.data.error) {
                 setAlert(<Alert variant="filled" severity="info"><strong>{res.data.message}</strong></Alert>)
@@ -136,11 +132,6 @@ function Multiplayer() {
                 </div>)
       socket.disconnect()
       setTimeout(() => setRedirectToJoinGame(true), 2000)
-    }
-
-    function leaveRoom() {
-      socket.disconnect()
-      setTimeout(() => setRedirectToJoinGame(true), 1000)
     }
 
     function changeBg() {
