@@ -51,7 +51,7 @@ function Multiplayer() {
     const [playCorrect] = useSound(successSound, {volume: 0.3})
 
     useEffect(() => { //Every time there is a change in the socket, we receive the message
-      fetch(`http://localhost:3001/guesses/${room}`)
+      fetch(`https://atlas-game.onrender.com/guesses/${room}`)
       .then(res => res.json())
       .then(data => {
         setGuesses(data.guesses)
@@ -104,7 +104,7 @@ function Multiplayer() {
       } else if (!guess) {
         setAlert(<Alert severity="error"><strong>Guess cannot be empty</strong></Alert>)
       } else {
-        axios.post('http://localhost:3001/guess', {guess, prev, guesses, room})
+        axios.post('https://atlas-game.onrender.com/guess', {guess, prev, guesses, room})
              .then(async (res) => {
               if (res.data.error) {
                 setAlert(<Alert variant="filled" severity="info"><strong>{res.data.message}</strong></Alert>)
