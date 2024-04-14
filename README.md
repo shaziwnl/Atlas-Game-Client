@@ -35,10 +35,10 @@ Step 3 - Play!
 
 ## Technologies Used
 - HTML/CSS
-- JavaScript (React with Node.js)
-- Express
+- React
+- Express.js
 - MongoDB
-- MaterialUI
+- Material UI
 - Socket.IO
 
 
