@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Alert from '@mui/material/Alert'
-import { AlertTitle } from '@mui/material'
-import axios, { Axios } from 'axios'
+import axios from 'axios'
 import './signup.css'
 
 
@@ -38,7 +37,7 @@ function Signup() {
       setAlert(<Alert className="error-alert" severity="error"><strong>Password must have a special character</strong></Alert>)
     }
     else {
-      axios.post('https://atlas-game.onrender.com/signup', user)
+      axios.post(`${process.env.REACT_APP_URL}/signup`, user)
            .then(res => {
             if (res.data.message === 'Username already exists') {
               setAlert(<Alert className="error-alert" severity="error"><strong>Username already exists</strong></Alert>)

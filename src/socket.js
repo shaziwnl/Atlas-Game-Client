@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client'
 
-export const socket = io("https://atlas-game.onrender.com", {
-    autoConnect: false
+export const socket = io(`${process.env.REACT_APP_MULTIPLAYER}`, {
+    autoConnect: true
 });

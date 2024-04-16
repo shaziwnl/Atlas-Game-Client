@@ -4,6 +4,7 @@ import Alert from '@mui/material/Alert'
 import axios from 'axios'
 import { Navigate } from 'react-router-dom';
 import './login.css'
+
 function Login() {
 
   const [alert, setAlert] = useState("")
@@ -20,7 +21,7 @@ function Login() {
       setAlert(<Alert className="error-alert" severity="error"><strong>Please enter your Password</strong></Alert>)
     } 
     else {
-      axios.post('https://atlas-game.onrender.com/login', {username, password})
+      axios.post(`${process.env.REACT_APP_URL}/login`, {username, password})
            .then(res => {
             if (res.data.errorAlert) {
               setAlert(<Alert className="error-alert" severity="error"><strong>{JSON.stringify(res.data.message)}</strong></Alert>)
@@ -32,10 +33,7 @@ function Login() {
     } 
   }
 
-  if (token) {
-    return <Navigate to={'/joingame'}/>
-    // return <JoinGame auth={true} />
-  }
+  if (token) { return <Navigate to={'/joingame'}/> }
 
   return (
     <div className='login'>

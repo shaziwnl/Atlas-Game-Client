@@ -33,18 +33,14 @@ function Random() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [guess, setGuess] = useState("");
-    const [token, setToken] =  useState(localStorage.getItem('token'))
     const [prev, setPrev] = useState('atlas')
-
     const [alert, setAlert] = useState("")
-
     const [guesses, setGuesses] = useState([])
-
     const [redirectToJoinGame, setRedirectToJoinGame] = useState(false)
-
     const [playErr] = useSound(errorSound, {volume: 1})
     const [playCorrect] = useSound(successSound, {volume: 0.3})
 
+    const token =  localStorage.getItem('token')
     
     if (!token) { //authentication 
       return <Navigate to='/login' />
@@ -76,7 +72,7 @@ function Random() {
       if (!guess) {
         setAlert(<Alert severity="error"><strong>Guess cannot be empty</strong></Alert>)
       } else {
-      axios.post('https://atlas-game.onrender.com/guess', {guess, prev, guesses, room: "SinglePlayer"})
+      axios.post(`${process.env.REACT_APP_URL}/guess`, {guess, prev, guesses, room: token})
            .then(res => {
             if (res.data.error) {
               setAlert(<Alert variant="filled" severity="info"><strong>{res.data.message}</strong></Alert>)

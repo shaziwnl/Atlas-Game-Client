@@ -12,10 +12,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
-// import { io } from 'socket.io-client'
-// const socket = io.connect('https://atlas-game.onrender.com')
 import { socket } from './JoinGame';
-
 
 function Multiplayer() {
     const [backgroundImage, setBackgroundImage] = useState(1);
@@ -41,7 +38,6 @@ function Multiplayer() {
     const [redirectToJoinGame, setRedirectToJoinGame] = useState(false);
 
     const location = useLocation();
-
     const room = location.state.room;
 
     const token = localStorage.getItem('token');
@@ -51,11 +47,13 @@ function Multiplayer() {
     const [playCorrect] = useSound(successSound, {volume: 0.3})
 
     useEffect(() => { //Every time there is a change in the socket, we receive the message
-      fetch(`https://atlas-game.onrender.com/guesses/${room}`)
+
+      fetch(`${process.env.REACT_APP_MULTIPLAYER}/guesses/${room}/${token}`)
       .then(res => res.json())
       .then(data => {
         setGuesses(data.guesses)
-        setPrev(data.guesses ? data.guesses[data.guesses.length - 1] : 'atlas')
+        setPrev(data.guesses.length ? data.guesses[data.guesses.length - 1] : 'atlas')
+        setTurn(data.turn)
       })
 
       socket.on('receive_message', (data) => {
@@ -69,25 +67,22 @@ function Multiplayer() {
         setAlert("")
       })
 
-      socket.on('lost', (room) => {
+      socket.on('you_won', (room) => {
         setResult(<div className='center-text-container'>
                     <h1 className='center-text'>YOU WON!</h1>
                   </div>)
+        socket.disconnect()
         setTimeout(() => setRedirectToJoinGame(true), 2000)
       })
 
+
     }, [])
+
+    if (!token) { return <Navigate to='/login' /> } //authentication 
 
     if (!room) { return <Navigate to='/joingame' /> }
 
-    if (!token) { //authentication 
-      return <Navigate to='/login' />
-    }
-
-    if (redirectToJoinGame) { //if we are leaving the game
-      
-      return <Navigate to='/joingame'/>
-    }
+    if (redirectToJoinGame) { return <Navigate to='/joingame'/> } //if we are leaving the game
 
     function guessesMapper(item) { //function to map the guesses
       return (
@@ -104,7 +99,7 @@ function Multiplayer() {
       } else if (!guess) {
         setAlert(<Alert severity="error"><strong>Guess cannot be empty</strong></Alert>)
       } else {
-        axios.post('https://atlas-game.onrender.com/guess', {guess, prev, guesses, room})
+        axios.post(`${process.env.REACT_APP_URL}/guess`, {guess, prev, guesses, room, token})
              .then(async (res) => {
               if (res.data.error) {
                 setAlert(<Alert variant="filled" severity="info"><strong>{res.data.message}</strong></Alert>)
@@ -115,15 +110,15 @@ function Multiplayer() {
                 setPrev(res.data.prev)
                 playCorrect()
                 setGuesses(res.data.guesses)
-                await socket.emit('send_message', {room, guesses: res.data.guesses, guess: res.data.prev})
+                socket.emit('send_message', {room, guesses: res.data.guesses, guess: res.data.prev})
               }
              })
         }
         setGuess("")
     }
 
-    async function handleResign() {
-      await socket.emit('resign', room)
+    function handleResign() {
+      socket.emit('resign', room)
       setGuesses([])
       setPrev('atlas')
       setGuess("")
@@ -131,6 +126,7 @@ function Multiplayer() {
                   <h1 className='center-text'>YOU LOST</h1>
                 </div>)
       socket.disconnect()
+      axios.post(`${process.env.REACT_APP_URL}/guesses/${room}`)
       setTimeout(() => setRedirectToJoinGame(true), 2000)
     }
 
@@ -160,6 +156,10 @@ function Multiplayer() {
       p: 4,
     };
 
+    window.onpagehide = (e) => {
+      handleResign()
+    }
+
   return (
     <div className={`random-container-b${backgroundImage}`}>
       {}
@@ -179,7 +179,6 @@ function Multiplayer() {
       <div className='random-buttons'>
         <Button variant="contained" size='large'  onClick={handleOpen}>Show Rules</Button>
         <Button variant="contained" size='large'  onClick={changeBg}>Change Background</Button>
-        {/* <Button variant="contained" size='large'  onClick={leaveRoom}>Leave Room</Button> */}
         <Button variant="contained" size='large' color="error" onClick={handleResign}>Resign</Button> 
       </div>
         <Modal

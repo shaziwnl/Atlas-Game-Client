@@ -13,16 +13,18 @@ function JoinGame() {
     const token = localStorage.getItem('token')
 
     useEffect(() => {
-        socket.connect()
-
-        socket.on('join_success', (message) => {
-            console.log(message);
+        
+        socket.on('join_success', (data) => {
+            console.log(data.message);
             setGoToMultiplayer(true);
+            
         })
 
         socket.on('join_fail', (message) => {
             console.log(message)
         })
+
+
     },[])
 
     if (!token) {
