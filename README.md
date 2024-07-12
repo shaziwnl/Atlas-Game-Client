@@ -43,7 +43,7 @@ Step 3 - Play!
 
 
 ## Project Status
-Some buggy sockets, in development
+Project is complete, contact sharang.goel@thesymbol.ca for requests
 
 
 ## Contact
