@@ -160,9 +160,9 @@ function Multiplayer() {
       handleResign()
     }
 
-    window.onbeforeunload = (e) => {
-      handleResign()
-    }
+    // window.onbeforeunload = (e) => {
+    //   handleResign()
+    // }
 
   return (
     <div className={`random-container-b${backgroundImage}`}>
