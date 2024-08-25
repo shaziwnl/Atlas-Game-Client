@@ -48,12 +48,13 @@
     background: rgba(255, 255, 255, 0.5);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 55px;
-    width: 35%;
+    margin-top: 5vh;
+    width: 35vw;
     height: 75vh;
     border: solid 2px black;
     overflow: auto;
     border-radius: 10px;
+    font-size: 0.9em;
 }
 
 .center-text-container {
@@ -65,7 +66,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
 .center-text {
     font-size: 100px;
@@ -73,22 +74,31 @@
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }
 
+.random-inputs {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5vh;
+}
 
 .random-inputs > input {
-    text-indent: 10px;
-    width: 25%;
-    height: 35px;
-    font-size: 20px;
+    text-indent: 0.3em;
+    width: 25vw;
+    height: 5vh;
+    font-size: 1.5em;
     opacity: 0.8;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom: solid 2px black;
 }
 
+.random-inputs > input::placeholder {
+    font-size: 0.75em;
+}
+
 .random-inputs > button {
-    width: 9.65%;
-    height: 41.4px;
-    font-size: 18px;
+    width: 10vw;
+    height: 5.6vh;
+    font-size: 0.85em;
     background-color: #0971f1;
     color: #ffff;
     border-top-right-radius: 10px;
@@ -103,7 +113,10 @@
     display: flex;
     justify-content: center;
     gap: 25px;
+    margin-bottom: 5vh;
+    height: 6vh;
 }
+
 
 /* .leave-buttons {
     justify-content: center;
@@ -118,7 +131,7 @@
     align-self: center;
 } */
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 0.5vw;
   }
   
   /* Track */
@@ -135,3 +148,5 @@
     border-top: 1px solid black;
     border-radius: 10px;
   }
+
+
