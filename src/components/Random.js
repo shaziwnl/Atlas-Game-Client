@@ -112,7 +112,7 @@ function Random() {
       </div>
       <div className='random-inputs'>
         <input id="guess-input" type='text' placeholder='Guess a City/State/Country/Continent' onKeyDown={handleKeyDown} onChange={(e) => {setGuess(e.target.value); setAlert("")}}></input>
-        <button onClick={handleSubmit}>SUBMIT &nbsp; &#10132;</button>
+        <button id='submit-guess-btn' onClick={handleSubmit}>SUBMIT &#10132;</button>
       </div>
       <br></br>
       <br></br>
