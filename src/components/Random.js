@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './random.css' 
 import Alert from '@mui/material/Alert'
@@ -33,12 +33,18 @@ function Random() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [guess, setGuess] = useState("");
-    const [prev, setPrev] = useState('atlas')
+    const [prev, setPrev] = useState(localStorage.getItem('guesses') ? 
+                                     JSON.parse(localStorage.getItem('guesses'))
+                                     [JSON.parse(localStorage.getItem('guesses')).length - 1] : 'atlas')
     const [alert, setAlert] = useState("")
-    const [guesses, setGuesses] = useState([])
+    const [guesses, setGuesses] = useState(localStorage.getItem('guesses') ? JSON.parse(localStorage.getItem('guesses')) : ['Atlas'])
     const [redirectToJoinGame, setRedirectToJoinGame] = useState(false)
     const [playErr] = useSound(errorSound, {volume: 1})
     const [playCorrect] = useSound(successSound, {volume: 0.3})
+
+    useEffect(() => {
+      localStorage.setItem('guesses', JSON.stringify(guesses))
+    }, [guesses])
 
     const token =  localStorage.getItem('token')
     
@@ -55,7 +61,6 @@ function Random() {
         <h1>{item[0].toUpperCase() + item.slice(1)}</h1>
       )
     }
-
     const listofGuesses = guesses.map(guessesMapper) //this maps the guesses
 
     function changeBg() {
@@ -105,7 +110,6 @@ function Random() {
   return (
     <div className={`random-container-b${backgroundImage}`}>
       <div className="random-game">
-        <h1>Atlas</h1>
         {listofGuesses}
         {alert}
         <br></br>
