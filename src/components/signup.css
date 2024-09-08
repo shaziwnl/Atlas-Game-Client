@@ -71,3 +71,18 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+@media screen and (max-width: 768px) {
+    .signup-form {
+        width: 50%;
+    }
+
+    .error-alert {
+        width: 50%;
+    }
+
+    .login-btn {
+        width: 50%;
+    }
+    
+}

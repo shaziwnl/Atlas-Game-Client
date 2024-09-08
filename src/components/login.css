@@ -56,3 +56,13 @@
 .signUp-btn:hover {
     transform: scale(1.03);
 }
+
+@media screen and (max-width: 768px) {
+    .login-form {
+        width: 50%;
+    }
+
+    .signUp-btn {
+        width: 50%;
+    }
+}
