@@ -124,7 +124,7 @@ function Random() {
       <div className='random-buttons'>
         <Button variant="contained" size='large'  onClick={handleOpen}>Show Rules</Button>
         <Button variant="contained" size='large'  onClick={changeBg}>Change BG</Button>
-        <Button variant="contained" size='large'  onClick={() => {setGuesses(['Atlas']); setAlert(""); setGuess(""); document.getElementById('guess-input').value = ""}}>Reset game</Button>
+        <Button variant="contained" size='large'  onClick={() => {setGuesses(['Atlas']); setAlert(""); setGuess(""); setPrev('atlas'); document.getElementById('guess-input').value = ""}}>Reset game</Button>
         <Button variant="contained" size='large' color="error" onClick={handleLeave}>Leave game</Button>
       </div>
         <Modal
