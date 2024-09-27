@@ -33,17 +33,18 @@ function Random() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [guess, setGuess] = useState("");
-    const [prev, setPrev] = useState(localStorage.getItem('guesses') ? 
+    const [prev, setPrev] = useState(localStorage.getItem('guesses') && JSON.parse(localStorage.getItem('guesses')).length !== 0 ?
                                      JSON.parse(localStorage.getItem('guesses'))
                                      [JSON.parse(localStorage.getItem('guesses')).length - 1] : 'atlas')
     const [alert, setAlert] = useState("")
-    const [guesses, setGuesses] = useState(localStorage.getItem('guesses') ? JSON.parse(localStorage.getItem('guesses')) : ['Atlas'])
+    const [guesses, setGuesses] = useState(localStorage.getItem('guesses') && JSON.parse(localStorage.getItem('guesses')).length !== 0 ? JSON.parse(localStorage.getItem('guesses')) : ['Atlas'])
     const [redirectToJoinGame, setRedirectToJoinGame] = useState(false)
     const [playErr] = useSound(errorSound, {volume: 1})
     const [playCorrect] = useSound(successSound, {volume: 0.3})
 
     useEffect(() => {
       localStorage.setItem('guesses', JSON.stringify(guesses))
+      console.log(guesses)
     }, [guesses])
 
     const token =  localStorage.getItem('token')
@@ -123,7 +124,7 @@ function Random() {
       <div className='random-buttons'>
         <Button variant="contained" size='large'  onClick={handleOpen}>Show Rules</Button>
         <Button variant="contained" size='large'  onClick={changeBg}>Change BG</Button>
-        <Button variant="contained" size='large'  onClick={() => {setGuesses([]); setAlert(""); setGuess(""); document.getElementById('guess-input').value = ""}}>Reset game</Button>
+        <Button variant="contained" size='large'  onClick={() => {setGuesses(['Atlas']); setAlert(""); setGuess(""); document.getElementById('guess-input').value = ""}}>Reset game</Button>
         <Button variant="contained" size='large' color="error" onClick={handleLeave}>Leave game</Button>
       </div>
         <Modal
