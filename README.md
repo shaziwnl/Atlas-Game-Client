@@ -43,12 +43,12 @@ Step 3 - Play!
 
 
 ## Project Status
-Project is complete, contact sharang.goel@thesymbol.ca for requests
+Project is complete, contact sharang.goel@thesymbol.ca for requests.
 
 
 ## Contact
-Sharang Goel: sharang.goel@uwaterloo.ca \
-Hetarth Mahida: hetarthmahida@gmail.com
+Sharang Goel: sharang.goel@uwaterloo.ca
+Hetarth Mahida: hetarth.mahida@uwaterloo.ca
 
 
 
